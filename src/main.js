@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
 
-    // 1. Анимация Hero (GSAP)
+    // 1. АНИМАЦИЯ HERO (GSAP)
     const heroTitleText = document.querySelector('#hero-title');
     if (heroTitleText) {
         const split = new SplitType('#hero-title', { types: 'words, chars' });
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
           .from('.hero__visual', { opacity: 0, scale: 0.95, duration: 1.2 }, "-=1");
     }
 
-    // 2. Scroll Reveal
+    // 2. SCROLL REVEAL
     const revealItems = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -23,45 +23,73 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.15 });
     revealItems.forEach(item => revealObserver.observe(item));
 
-    // 3. Валидация телефона (только цифры и символы +, -, space)
-    const phoneInput = document.getElementById('phone-input');
-    phoneInput.addEventListener('input', (e) => {
-        e.target.value = e.target.value.replace(/[^0-9+ \-]/g, '');
+    // 3. МОБИЛЬНОЕ МЕНЮ
+    const burger = document.getElementById('burger-menu');
+    const mobileMenu = document.getElementById('mobile-menu-overlay');
+    const mobileLinks = document.querySelectorAll('.mobile-menu__link');
+
+    if (burger) {
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+    }
+
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            burger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
     });
 
-    // 4. AJAX отправка формы и Капча
-    const contactForm = document.getElementById('ajax-form');
-    const formResponse = document.getElementById('form-response');
-    
-    // Генерируем простую задачу
-    const num1 = Math.floor(Math.random() * 10);
-    const num2 = Math.floor(Math.random() * 10);
-    const captchaLabel = document.getElementById('captcha-label');
-    const captchaInput = document.getElementById('captcha-input');
-    
-    if(captchaLabel) captchaLabel.textContent = `Сколько будет ${num1} + ${num2}?`;
+    // 4. COOKIE POPUP
+    const cookiePopup = document.getElementById('cookie-popup');
+    const cookieAccept = document.getElementById('cookie-accept');
 
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        // Проверка капчи
-        if (parseInt(captchaInput.value) !== (num1 + num2)) {
-            alert('Неверный ответ на защитный вопрос!');
-            return;
-        }
-
-        const btn = contactForm.querySelector('button');
-        const originalText = btn.textContent;
-        
-        // Имитация загрузки
-        btn.disabled = true;
-        btn.textContent = 'Отправка...';
-
+    if (!localStorage.getItem('cookies-accepted')) {
         setTimeout(() => {
-            btn.style.display = 'none';
-            formResponse.textContent = 'Спасибо! Детали на сайте. Мы свяжемся с вами в ближайшее время.';
-            formResponse.classList.add('success');
-            contactForm.reset();
-        }, 1500);
+            cookiePopup.classList.add('active');
+        }, 2000);
+    }
+
+    cookieAccept.addEventListener('click', () => {
+        localStorage.setItem('cookies-accepted', 'true');
+        cookiePopup.classList.remove('active');
     });
+
+    // 5. КОНТАКТНАЯ ФОРМА
+    const phoneInput = document.getElementById('phone-input');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^0-9+ \-]/g, '');
+        });
+    }
+
+    const contactForm = document.getElementById('ajax-form');
+    if (contactForm) {
+        const num1 = Math.floor(Math.random() * 10);
+        const num2 = Math.floor(Math.random() * 10);
+        const captchaLabel = document.getElementById('captcha-label');
+        const captchaInput = document.getElementById('captcha-input');
+        if (captchaLabel) captchaLabel.textContent = `Сколько будет ${num1} + ${num2}?`;
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (parseInt(captchaInput.value) !== (num1 + num2)) {
+                alert('Неверный ответ на капчу!');
+                return;
+            }
+            const btn = contactForm.querySelector('button');
+            const formResponse = document.getElementById('form-response');
+            btn.disabled = true;
+            btn.textContent = 'Отправка...';
+            setTimeout(() => {
+                btn.style.display = 'none';
+                formResponse.textContent = 'Успешно отправлено!';
+                formResponse.classList.add('success');
+            }, 1500);
+        });
+    }
 });
