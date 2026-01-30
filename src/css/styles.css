@@ -630,3 +630,117 @@ a {
         grid-template-columns: 1fr;
     }
 }
+/* --- CONTACT SECTION --- */
+.contact {
+    padding: 100px 0;
+    background-color: #f0f4f8;
+}
+
+.contact__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.contact__text {
+    margin: 20px 0 40px;
+    color: var(--color-text);
+}
+
+.contact__item {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.contact__item strong {
+    display: block;
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.contact__form-wrapper {
+    background: var(--color-white);
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.contact__form input[type="text"],
+.contact__form input[type="email"],
+.contact__form input[type="tel"] {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    font-family: inherit;
+    outline: none;
+    transition: var(--transition);
+}
+
+.contact__form input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.1);
+}
+
+.form-captcha {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    background: var(--color-light);
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.form-captcha input {
+    width: 80px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.form-checkbox {
+    margin-bottom: 25px;
+    font-size: 0.85rem;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn--full {
+    width: 100%;
+    justify-content: center;
+}
+
+.form-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    display: none;
+    /* Скрыто по умолчанию */
+}
+
+.form-message.success {
+    display: block;
+    background: #e6fffa;
+    color: #2c7a7b;
+    border: 1px solid #b2f5ea;
+}
+
+@media (max-width: 992px) {
+    .contact__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact__form-wrapper {
+        padding: 30px;
+    }
+}
