@@ -887,3 +887,106 @@ a {
         text-align: center;
     }
 }
+/* --- СТИЛИ ДЛЯ ЮРИДИЧЕСКИХ СТРАНИЦ --- */
+.container--narrow {
+    max-width: 800px;
+    /* Узкий контейнер для удобного чтения текста */
+    padding: 120px 20px 80px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 30px;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.page-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 40px;
+    color: var(--color-dark);
+}
+
+.page-content {
+    color: var(--color-text);
+    line-height: 1.8;
+}
+
+.page-content h2 {
+    margin: 40px 0 20px;
+    font-size: 1.5rem;
+    color: var(--color-dark);
+}
+
+.page-content p {
+    margin-bottom: 20px;
+}
+
+.lead {
+    font-size: 1.2rem;
+    color: var(--color-dark);
+    font-weight: 500;
+    margin-bottom: 30px !important;
+}
+
+.styled-list {
+    margin: 20px 0;
+    padding-left: 0;
+}
+
+.styled-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+.styled-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 10px;
+    height: 2px;
+    background: var(--color-primary);
+}
+
+.accent-link {
+    color: var(--color-primary);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.page-content strong {
+    color: var(--color-dark);
+}
+
+/* Адаптив для мобилок */
+@media (max-width: 768px) {
+    .container--narrow {
+        padding-top: 100px;
+    }
+}
+/* Специальные элементы для дисклеймера */
+.disclaimer-box {
+    background: rgba(0, 102, 255, 0.03);
+    border-left: 4px solid var(--color-primary);
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 0 16px 16px 0;
+}
+
+.notice {
+    margin-top: 40px;
+    padding: 20px;
+    background: var(--color-light);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    border: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.page-content em {
+    color: var(--color-primary);
+    font-style: normal;
+    font-weight: 600;
+}
