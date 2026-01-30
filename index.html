@@ -13,7 +13,7 @@
     rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
     <script type="module" crossorigin src="/droniq-metra/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/droniq-metra/assets/styles-Ck7PCBTp.css">
+    <link rel="stylesheet" crossorigin href="/droniq-metra/assets/styles-BOWCYd0E.css">
   </head>
   <body>
     <header class="header" id="header">
@@ -39,6 +39,18 @@
     </div>
   </div>
 </header>
+<div class="mobile-menu" id="mobile-menu-overlay">
+  <nav class="mobile-menu__nav">
+    <ul class="mobile-menu__list">
+      <li><a href="#hero" class="mobile-menu__link">Главная</a></li>
+      <li><a href="#about" class="mobile-menu__link">Платформа</a></li>
+      <li><a href="#features" class="mobile-menu__link">Преимущества</a></li>
+      <li><a href="#innovations" class="mobile-menu__link">Инновации</a></li>
+      <li><a href="#blog" class="mobile-menu__link">Блог</a></li>
+      <li><a href="#contact" class="mobile-menu__link btn btn--primary">Связаться</a></li>
+    </ul>
+  </nav>
+</div>
 
     <main>
       <!-- Loads the specified .html file -->
@@ -241,7 +253,7 @@
 
                     <div class="form-checkbox">
                         <input type="checkbox" id="agree" required>
-                        <label for="agree">Я согласен с <a href="personal-data-policy.html">политикой
+                        <label for="agree">Я согласен с <a href="./personal-data-policy.html">политикой
                                 конфиденциальности</a></label>
                     </div>
 
@@ -309,6 +321,13 @@
     <p>&copy; 2026 Droniq-Metra. Платформа уже доступна в Европе.</p>
   </div>
 </footer>
+    <div id="cookie-popup" class="cookie-popup">
+      <div class="cookie-popup__content">
+        <p>Этот сайт использует cookies для улучшения работы. Подробнее — в нашей <a href="./cookies.html">Cookie
+            политике</a>.</p>
+        <button id="cookie-accept" class="btn btn--primary">Принять</button>
+      </div>
+    </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://unpkg.com/split-type"></script>
   </body>
